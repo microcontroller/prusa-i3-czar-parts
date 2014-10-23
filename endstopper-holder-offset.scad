@@ -1,15 +1,27 @@
-// Prusa i3 endstop holder with offset.
+//--------------------------------------------------------------------//
+// Prusa i3 endstop holder with offset                                //
+//--------------------------------------------------------------------//
+// Author        : Patrick Henry                                      //
+// Email         : phenry@pontetec.com                                //
+// License       : MIT - http://opensource.org/licenses/MIT           //
+//--------------------------------------------------------------------//
+// The endstop holder from 3dprinterczar.com is designed to clamp
+// onto the M8 rod, and hold the microswitch in place with a zip tie.
+// However, the switch protrudes from the holder, which reduces the
+// range of motion for the Y axis, and makes it much harder to place
+// the Z axis endstop without impacting the coupler on that axis.
 //
-// The endstop holder from 3dprinterczar.com is designed to clamp onto the
-// M8 rod, and hold the microswitch in place with a zip tie. However, the switch
-// protrudes from the holder, which reduces the range of motion for the Y axis,
-// and makes it much harder to place the Z axis endstop without impacting the
-// coupler on that axis.
-//
-// This part simply offsets the microswitch to reduce the amount by which it
-// protrudes from the holder.
+// This part simply offsets the microswitch to reduce the amount by
+// which it protrudes from the holder, and can be used for both Y and
+// Z axes, though the enstopper-holder-y-extended model gives a much
+// greater extension for the Y axis, so I only use this for the Z.
+//--------------------------------------------------------------------//
 
 include <MCAD/nuts_and_bolts.scad>
+
+//--------------------------------------------------------------------//
+// Useful constants                                                   //
+//--------------------------------------------------------------------//
 
 $fn=50;
 eps=0.01;
@@ -22,6 +34,11 @@ nut_x = METRIC_NUT_AC_WIDTHS[3];
 nut_y = METRIC_NUT_THICKNESS[3];
 nut_z = sqrt(3) * nut_x / 2;
 nut_scale = z/nut_z;
+
+//--------------------------------------------------------------------//
+// Main body                                                          //
+//--------------------------------------------------------------------//
+
 difference() {
   union() {
     cube([40.75, wall, z]);
